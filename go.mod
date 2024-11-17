@@ -1,4 +1,4 @@
-module go-sdk
+module github.com/ZhanibekTau/go-sdk
 
 go 1.23
 
