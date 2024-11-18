@@ -2,7 +2,7 @@ package helpers
 
 import (
 	"context"
-	paginator "go-sdk/pkg/database/gorm/pagination"
+	paginator "github.com/ZhanibekTau/go-sdk/pkg/database/gorm/pagination"
 	"gorm.io/gorm"
 	"time"
 )

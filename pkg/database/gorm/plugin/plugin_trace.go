@@ -1,8 +1,8 @@
 package plugin
 
 import (
-	"go-sdk/pkg/tracer"
-	span2 "go-sdk/pkg/tracer/span"
+	"github.com/ZhanibekTau/go-sdk/pkg/tracer"
+	span2 "github.com/ZhanibekTau/go-sdk/pkg/tracer/span"
 	trace2 "go.opencensus.io/trace"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"

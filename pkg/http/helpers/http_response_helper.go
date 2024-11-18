@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/ZhanibekTau/go-sdk/pkg/config"
+	"github.com/ZhanibekTau/go-sdk/pkg/exception"
 	"github.com/getsentry/sentry-go"
 	"github.com/gin-gonic/gin"
 	"github.com/mitchellh/mapstructure"
-	"go-sdk/pkg/config"
-	"go-sdk/pkg/exception"
 	"net/http"
 	"strconv"
 )

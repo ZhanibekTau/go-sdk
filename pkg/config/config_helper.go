@@ -3,8 +3,8 @@ package config
 import (
 	"encoding/json"
 	"fmt"
+	structHelper "github.com/ZhanibekTau/go-sdk/pkg/structures"
 	"github.com/spf13/viper"
-	structHelper "go-sdk/pkg/structures"
 	"os"
 	"strings"
 )

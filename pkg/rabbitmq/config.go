@@ -2,7 +2,7 @@ package rabbitmq
 
 import (
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
-	"go-sdk/pkg/rabbitmq/enums"
+	"github.com/ZhanibekTau/go-sdk/pkg/rabbitmq/enums"
 )
 
 type Config func(*amqp.Config)

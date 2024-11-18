@@ -2,12 +2,12 @@ package app
 
 import (
 	"fmt"
+	"github.com/ZhanibekTau/go-sdk/pkg/config"
+	ginHelper "github.com/ZhanibekTau/go-sdk/pkg/gin"
+	"github.com/ZhanibekTau/go-sdk/pkg/tracer"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/getsentry/sentry-go"
 	"github.com/gin-gonic/gin"
-	"go-sdk/pkg/config"
-	ginHelper "go-sdk/pkg/gin"
-	"go-sdk/pkg/tracer"
 	"time"
 )
 

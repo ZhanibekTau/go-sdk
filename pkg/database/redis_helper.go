@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/ZhanibekTau/go-sdk/pkg/config"
+	"github.com/ZhanibekTau/go-sdk/pkg/logger"
 	"github.com/redis/go-redis/v9"
-	"go-sdk/pkg/config"
-	"go-sdk/pkg/logger"
 	"time"
 )
 

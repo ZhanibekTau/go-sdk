@@ -1,8 +1,8 @@
 package logger
 
 import (
-	"go-sdk/pkg/config"
-	"go-sdk/pkg/exception"
+	"github.com/ZhanibekTau/go-sdk/pkg/config"
+	"github.com/ZhanibekTau/go-sdk/pkg/exception"
 	"log"
 	"os"
 	"strconv"

@@ -1,10 +1,10 @@
 package exception
 
 import (
+	"github.com/ZhanibekTau/go-sdk/pkg/constants"
+	"github.com/ZhanibekTau/go-sdk/pkg/validation"
 	"github.com/go-errors/errors"
 	"github.com/gookit/validate"
-	"go-sdk/pkg/constants"
-	"go-sdk/pkg/validation"
 	"net/http"
 )
 

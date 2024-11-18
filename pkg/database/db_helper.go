@@ -2,8 +2,8 @@ package database
 
 import (
 	"fmt"
+	"github.com/ZhanibekTau/go-sdk/pkg/database/gorm/plugin"
 	"github.com/go-errors/errors"
-	"go-sdk/pkg/database/gorm/plugin"
 	mysqlDriver "gorm.io/driver/mysql"
 	postgresDriver "gorm.io/driver/postgres"
 	sqlserverDriver "gorm.io/driver/sqlserver"
