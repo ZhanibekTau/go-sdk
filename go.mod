@@ -3,6 +3,7 @@ module github.com/ZhanibekTau/go-sdk
 go 1.23
 
 require (
+	github.com/JGLTechnologies/gin-rate-limit v1.5.4
 	github.com/ThreeDotsLabs/watermill v1.4.1
 	github.com/ThreeDotsLabs/watermill-amqp/v2 v2.1.3
 	github.com/davecgh/go-spew v1.1.1
