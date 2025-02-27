@@ -181,6 +181,7 @@ func SetColors(c *gin.Context, statusCode int, start time.Time) {
 		constants.Cyan,
 		methodColor, c.Request.Method, constants.Reset,
 		constants.Cyan, c.Request.URL.Path,
-		methodColor, c.Status, constants.Reset,
-		c.Request.ContentLength, time.Since(start).Seconds(), constants.Reset)
+		methodColor, statusCode, constants.Reset,
+		c.Request.ContentLength, fmt.Sprintf("%.6f", time.Since(start).Seconds()), constants.Reset,
+	)
 }
