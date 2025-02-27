@@ -5,12 +5,15 @@ import (
 	"errors"
 	"fmt"
 	"github.com/ZhanibekTau/go-sdk/pkg/config"
+	"github.com/ZhanibekTau/go-sdk/pkg/constants"
 	"github.com/ZhanibekTau/go-sdk/pkg/exception"
 	"github.com/getsentry/sentry-go"
 	"github.com/gin-gonic/gin"
 	"github.com/mitchellh/mapstructure"
+	"log"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 func FormattedTextErrorResponse(c *gin.Context, statusCode int, message string, context map[string]any) {
@@ -61,6 +64,8 @@ func FormattedSuccessResponse(c *gin.Context, data any) {
 }
 
 func FormattedResponse(c *gin.Context) {
+	start := time.Now()
+
 	appExceptionObject, exists := c.Get("exception")
 	fmt.Printf("%+v\n", appExceptionObject)
 
@@ -86,8 +91,10 @@ func FormattedResponse(c *gin.Context) {
 		statusCode, ex := c.Get("status_code")
 
 		if !ex {
+			SetColors(c, http.StatusOK, start)
 			c.Data(http.StatusOK, "application/json", jsonBytes)
 		} else {
+			SetColors(c, statusCode.(int), start)
 			c.Data(statusCode.(int), "application/json", jsonBytes)
 		}
 
@@ -158,5 +165,22 @@ func FormattedResponse(c *gin.Context) {
 		sentry.CaptureMessage("Http Status Code  - " + strconv.Itoa(appException.Code) + ". Url - " + c.Request.URL.Path)
 	})
 
+	SetColors(c, appException.Code, start)
 	c.Data(appException.Code, "application/json", jsonBytes)
+}
+
+func SetColors(c *gin.Context, statusCode int, start time.Time) {
+	methodColor := constants.Green
+	if statusCode >= 400 && statusCode < 500 {
+		methodColor = constants.Yellow
+	} else if statusCode >= 500 {
+		methodColor = constants.Red
+	}
+
+	log.Printf("%s[%s%s%s%s] \"%s\" - status - %s%d%s, size %d bytes in %v second%s",
+		constants.Cyan,
+		methodColor, c.Request.Method, constants.Reset,
+		constants.Cyan, c.Request.URL.Path,
+		methodColor, c.Status, constants.Reset,
+		c.Request.ContentLength, time.Since(start).Seconds(), constants.Reset)
 }
