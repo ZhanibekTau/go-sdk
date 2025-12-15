@@ -12,8 +12,8 @@ type AppError struct {
 
 func (a *AppError) Error() string {
 	if a.Err != nil {
-		return fmt.Sprintf("[%s] %s.%s: %s | %v", a.Env, a.Service, a.Method, a.Message, a.Err)
+		return fmt.Sprintf("[%s] %s %s %s %v", a.Env, a.Service, a.Method, a.Message, a.Err)
 	}
 
-	return fmt.Sprintf("[%s] %s.%s: %s", a.Env, a.Service, a.Method, a.Message)
+	return fmt.Sprintf("[%s] %s %s %s", a.Env, a.Service, a.Method, a.Message)
 }

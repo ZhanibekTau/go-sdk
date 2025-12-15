@@ -5,7 +5,6 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"time"
 
@@ -15,7 +14,6 @@ import (
 type TelegramNotifier struct {
 	Token  string
 	ChatID string
-	Client *http.Client
 }
 
 func NewTelegramNotifier(token, chatID string) *TelegramNotifier {
@@ -25,7 +23,7 @@ func NewTelegramNotifier(token, chatID string) *TelegramNotifier {
 	}
 }
 
-func (t *TelegramNotifier) Send(service string, method string, message string, env string, err error, isTLSSecure bool) error {
+func (t *TelegramNotifier) Send(service string, method string, message string, env string, err error, TLSSkipVerify bool) error {
 	appErr := &errors.AppError{
 		Service: service,
 		Method:  method,
@@ -47,7 +45,7 @@ func (t *TelegramNotifier) Send(service string, method string, message string, e
 
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: isTLSSecure,
+			InsecureSkipVerify: TLSSkipVerify,
 		},
 	}
 
@@ -55,7 +53,7 @@ func (t *TelegramNotifier) Send(service string, method string, message string, e
 		Transport: tr,
 		Timeout:   10 * time.Second,
 	}
-	
+
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonBody))
 	if err != nil {
 		return err
