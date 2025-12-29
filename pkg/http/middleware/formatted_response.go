@@ -10,6 +10,10 @@ func FormattedResponseMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Next()
 
+		if c.IsAborted() {
+			return
+		}
+		
 		helpers.FormattedResponse(c)
 	}
 }
